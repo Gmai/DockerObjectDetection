@@ -25,11 +25,6 @@ RUN cd $path/protoc && unzip protoc-3.0.0-linux-x86_64.zip
 RUN cp -r $path/protoc $path/Github/models/research/
 RUN cd $path/Github/models/research && ./protoc/bin/protoc $path/Github/models/research/object_detection/protos/*.proto --proto_path=$path/Github/models/research/ --python_out=.
 
-RUN cd $path/Github && git clone https://github.com/tzutalin/labelImg.git
-RUN apt-get install pyqt5-dev-tools -y
-RUN pip3 install -r $path/Github/labelImg/requirements/requirements-linux-python3.txt
-RUN cd $path/Github/labelImg && make qt5py3
-
 ENV PYTHONPATH $path/models/research:$path/models/research/slim
 
 EXPOSE 8888
